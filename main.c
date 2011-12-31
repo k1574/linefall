@@ -47,13 +47,13 @@ draw(void)
 		first->prev = 0 ;
 	}
 
-	pline = first ;
+	pline = last ;
 	
 	aes_clear_entire_screen();
 	aes_move_to(1, 1);
 	while(pline){
-		aes_printf("%s", pline->data, first, last);
-		pline = pline->next ;
+		aes_printf("%s", pline->data);
+		pline = pline->prev;
 	}
 }
 
