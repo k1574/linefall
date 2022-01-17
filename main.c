@@ -24,30 +24,30 @@ draw(void)
 		quit();
 
 	nline = malloc(sizeof(Line)) ;
+	nline->next = 0;
 	nline->data = strdup(buf) ;
-	nline->next = last ;
-	nline->prev = 0 ;
+	nline->prev = last ;
 
 	if(!first){
 		first = nline ;
+	}if(last){
+		last->next = nline ;
 	}
-
-	if(last){
-		last->prev = nline ;
-	}
-
 	last = nline ;
+
 	++linenum;
 
 	/* Cleaning exceed line when reached bottom. */
 	if(height <= linenum){
-		first = first->prev;
-		free(first->next->data);
-		free(first->next);
-		first->next = 0 ;
+		free(first->data);
+		first = first->next ;
+
+		free(first->prev);
+
+		first->prev = 0 ;
 	}
 
-	pline = last ;
+	pline = first ;
 	
 	aes_clear_entire_screen();
 	aes_move_to(1, 1);
