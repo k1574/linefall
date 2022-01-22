@@ -16,7 +16,7 @@ Line *last, *first;
 void
 draw(void)
 {
-	char *buf[1024];
+	char buf[1024];
 	Line *nline;
 	Line *pline;
 
