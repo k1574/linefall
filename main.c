@@ -16,7 +16,7 @@ Line *last, *first;
 void
 draw(void)
 {
-	char *buf[1024];
+	char buf[1024];
 	Line *nline;
 	Line *pline;
 
@@ -54,6 +54,7 @@ draw(void)
 	while(pline){
 		aes_printf("%s", pline->data);
 		pline = pline->prev;
+		pline = pline->prev ;
 	}
 }
 
